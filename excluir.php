@@ -47,6 +47,8 @@ if(isset($_POST['id'])){
 
         <form action="backend/service/excluir_backend.php" method="post" class="excluir-form">
             <h2>Excluir Cadastro</h2>
+            <input type="hidden" id="id" name="id" value="<?php echo isset($row['id']) ? htmlspecialchars($row['id']) : '';?>">
+
             <label for="email">Email:</label>
             <input disabled type="email" id="email" name="email" value="<?php echo isset($row['email']) ? htmlspecialchars($row['email']) : '';?>" required>
             

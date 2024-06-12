@@ -2,7 +2,7 @@
 
 include("backend/database/connection.php");
 
-$query = "SELECT id,email, nome, nascimento, endereco FROM pessoa";
+$query = "SELECT id, email, nome, nascimento, endereco FROM pessoa";
 $result = $conn->query($query);
 
 if ($result) {
@@ -16,10 +16,7 @@ if ($result) {
 } else {
     $error = "Erro ao recuperar registros: " . $conn->error;
 }
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -38,7 +35,7 @@ if ($result) {
             <ul class="nav-links">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="cadastro.php">Cadastrar</a></li>
-                <li><a href="">Serviços</a></li>
+                <li><a href="#">Serviços</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
         </div>
@@ -52,34 +49,39 @@ if ($result) {
             <table>
                 <thead>
                     <tr>
-                        <th>CPF</th>
+                        <th>Email</th>
                         <th>Nome</th>
                         <th>Data de Nascimento</th>
                         <th>Endereço</th>
-                        <th></th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($registros as $registro): ?>
+                    <?php if (empty($registros)): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($registro['email']); ?></td>
-                            <td><?php echo htmlspecialchars($registro['nome']); ?></td>
-                            <td><?php echo htmlspecialchars($registro['nascimento']); ?></td>
-                            <td><?php echo htmlspecialchars($registro['endereco']); ?></td>
-                            <td>
-                            <form action="editar.php" method="post" style="display: inline;">
-                                <input type="hidden" name="id" value="<?php echo $registro['id']; ?>">
-                                <button type="submit" class="editar-button">Editar</button>
-                            </form>
-                    
-                            <form action="excluir.php" method="post" style="display: inline;">
-                                <input type="hidden" name="id" value="<?php echo $registro['id']; ?>">
-                                <button type="submit" class="excluir-button">Excluir</button>
-                            </form>
-                            
-                            </td>
+                            <td colspan="5" style="text-align: center;">Não há pessoas cadastradas. <a href="cadastro.php">Cadastre agora</a>.</td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php else: ?>
+                        <?php foreach ($registros as $registro): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($registro['email']); ?></td>
+                                <td><?php echo htmlspecialchars($registro['nome']); ?></td>
+                                <td><?php echo htmlspecialchars($registro['nascimento']); ?></td>
+                                <td><?php echo htmlspecialchars($registro['endereco']); ?></td>
+                                <td>
+                                    <form action="editar.php" method="post" style="display: inline;">
+                                        <input type="hidden" name="id" value="<?php echo $registro['id']; ?>">
+                                        <button type="submit" class="editar-button">Editar</button>
+                                    </form>
+                                    
+                                    <form action="excluir.php" method="post" style="display: inline;">
+                                        <input type="hidden" name="id" value="<?php echo $registro['id']; ?>">
+                                        <button type="submit" class="excluir-button">Excluir</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
         <?php endif; ?>
