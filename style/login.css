@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    background-image: url('background.jpg'); /* Substitua 'background.jpg' pelo caminho da sua imagem de fundo */
+    background-size: cover;
+    background-position: center;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-card h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-card input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-options {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-options button {
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.login-options a{
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-options button {
+    background-color: #333;
+}
+
+.login-options button:hover {
+    background-color: #555;
+}
+
+.signup-link,
+.forgot-password-link {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px; 
+}
