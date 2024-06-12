@@ -50,17 +50,19 @@ if(isset($_POST['id'])){
 
         <form action="backend/service/editar_backend.php" method="post" class="editar-form">
             <h2>Edição de Pessoa</h2>
+            <input type="hidden" id="id" name="id" value="<?php echo isset($row['id']) ? htmlspecialchars($row['id']) : '';?>">
+
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="<?php echo isset($row['email']) ? htmlspecialchars($row['email']) : '';?>" required>
             
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" value="<?php echo isset($row['email']) ? htmlspecialchars($row['nome']) : '';?>" required>
+            <input type="text" id="nome" name="nome" value="<?php echo isset($row['nome']) ? htmlspecialchars($row['nome']) : '';?>" required>
             
             <label for="nascimento">Nascimento:</label>
-            <input type="date" id="nascimento" name="nascimento" value="<?php echo isset($row['email']) ? htmlspecialchars($row['nascimento']) : '';?>" required>
+            <input type="date" id="nascimento" name="nascimento" value="<?php echo isset($row['nascimento']) ? htmlspecialchars($row['nascimento']) : '';?>" required>
             
             <label for="endereco">Endereço:</label>
-            <input type="text" id="endereco" name="endereco" value="<?php echo isset($row['email']) ? htmlspecialchars($row['email']) : '';?>">
+            <input type="text" id="endereco" name="endereco" value="<?php echo isset($row['endereco']) ? htmlspecialchars($row['endereco']) : '';?>">
             
             <div class="buttons-container">
                 <a href="index.php" class="voltar-button">Voltar</a>
