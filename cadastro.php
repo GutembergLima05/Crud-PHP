@@ -32,18 +32,21 @@
         <form action="backend/service/cadastro_backend.php" method="post" class="cadastro-form">
             <h2>Cadastro de Pessoa</h2>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" placeholder="Digite seu email" required>
             
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
             
             <label for="nascimento">Nascimento:</label>
             <input type="date" id="nascimento" name="nascimento" required>
             
             <label for="endereco">Endereço:</label>
-            <input type="text" id="endereco" name="endereco">
+            <input type="text" id="endereco" name="endereco" placeholder="Digite seu endereço">
             
-            <button type="submit">Cadastrar</button>
+            <div class="buttons-container">
+                <a href="index.php" class="voltar-button">Voltar</a>
+                <button type="submit">Cadastrar</button>
+            </div>
         </form>
     </div>
 </body>

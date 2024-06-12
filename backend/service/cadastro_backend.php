@@ -15,8 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
-      
+        // Verifica se o email já está cadastrado
         $check_stmt = $conn->prepare("SELECT email FROM pessoa WHERE email = ?");
+        if (!$check_stmt) {
+            throw new Exception("Falha na preparação da consulta: " . $conn->error);
+        }
         $check_stmt->bind_param("s", $email);
         $check_stmt->execute();
         $check_stmt->store_result();
@@ -25,12 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             throw new Exception("Erro: Email já cadastrado.");
         }
 
+        // Insere os dados na tabela pessoa
         $stmt = $conn->prepare("INSERT INTO pessoa (email, nome, nascimento, endereco) VALUES (?, ?, ?, ?)");
-
         if (!$stmt) {
             throw new Exception("Falha na preparação da consulta: " . $conn->error);
         }
-
         $stmt->bind_param("ssss", $email, $nome, $nascimento, $endereco);
 
         if ($stmt->execute()) {

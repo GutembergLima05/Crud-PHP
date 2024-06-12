@@ -2,7 +2,7 @@
 
 include("backend/database/connection.php");
 
-$query = "SELECT email, nome, nascimento, endereco FROM pessoa";
+$query = "SELECT id,email, nome, nascimento, endereco FROM pessoa";
 $result = $conn->query($query);
 
 if ($result) {
@@ -56,6 +56,7 @@ if ($result) {
                         <th>Nome</th>
                         <th>Data de Nascimento</th>
                         <th>Endereço</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,6 +66,18 @@ if ($result) {
                             <td><?php echo htmlspecialchars($registro['nome']); ?></td>
                             <td><?php echo htmlspecialchars($registro['nascimento']); ?></td>
                             <td><?php echo htmlspecialchars($registro['endereco']); ?></td>
+                            <td>
+                            <form action="editar.php" method="post" style="display: inline;">
+                                <input type="hidden" name="id" value="<?php echo $registro['id']; ?>">
+                                <button type="submit" class="editar-button">Editar</button>
+                            </form>
+                    
+                            <form action="excluir.php" method="post" style="display: inline;">
+                                <input type="hidden" name="id" value="<?php echo $registro['id']; ?>">
+                                <button type="submit" class="excluir-button">Excluir</button>
+                            </form>
+                            
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

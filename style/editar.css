@@ -48,61 +48,43 @@ body {
     border-radius: 8px;
 }
 
-.cadastro-form h2 {
+.editar-form h2 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.cadastro-form label {
+.editar-form label {
     display: block;
     margin: 10px 0 5px;
 }
 
-.cadastro-form input {
-    width: calc(100% - 25px);
+.editar-form input {
+    width: calc(100% - 25px); /* Reduz a largura do input para compensar o preenchimento */
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.cadastro-form button {
-    width: 52%;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.cadastro-form button:hover {
-    background-color: #555;
-}
-
-.buttons-container {
+.editar-form .buttons-container {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
-.voltar-button {
-    width: calc(50% - 10px);
+.editar-form button {
+    width: 48%; /* Ajusta a largura do botão */
     padding: 10px;
-    margin-right: 10px; /* Adiciona margem à direita do botão Voltar */
     background-color: #333;
     color: white;
     border: none;
     border-radius: 4px;
     font-size: 16px;
-    text-align: center;
-    text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.voltar-button:hover {
+.editar-form button:hover {
     background-color: #555;
 }
 
@@ -111,3 +93,23 @@ body {
     color: red;
     font-size: 18px;
 }
+
+.voltar-button {
+    display: inline-block;
+    width: 40%;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.voltar-button:hover {
+    background-color: #555;
+}
+
