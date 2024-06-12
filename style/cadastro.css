@@ -60,7 +60,7 @@ body {
 
 
 .cadastro-form input {
-    width: calc(100% - 40px); /* Reduz a largura do input para compensar o preenchimento */
+    width: calc(100% - 25px); /* Reduz a largura do input para compensar o preenchimento */
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -68,8 +68,9 @@ body {
 }
 
 .cadastro-form button {
-    width: calc(100% - 40px); /* Ajusta a largura do botão */
+    width: calc(100% - 25px); /* Ajusta a largura do botão */
     padding: 10px;
+    margin-left: 10px;
     background-color: #333;
     color: white;
     border: none;
@@ -81,4 +82,10 @@ body {
 
 .cadastro-form button:hover {
     background-color: #555;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+    font-size: 18px;
 }

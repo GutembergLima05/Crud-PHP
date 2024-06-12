@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             throw new Exception("Falha na preparação da consulta: " . $conn->error);
         }
 
-        $stmt->bind_param("ssss", $email, $nome, $nascimento, $endereco);
+        $stmt->bind_param("isss", $email, $nome, $nascimento, $endereco);
 
         if ($stmt->execute()) {
             header("Location: ../../index.php");

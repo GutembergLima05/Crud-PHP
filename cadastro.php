@@ -24,9 +24,11 @@
     <div class="container">
 
     <?php if (isset($_GET['error'])): ?>
-        <div style="text-align: center; color: red; font-size: 18px;"><?php echo htmlspecialchars($_GET['error']); ?></div>
+        <div class="error-message">
+            <?php echo htmlspecialchars($_GET['error']); ?>
+        </div>
     <?php endif; ?>
-    
+
         <form action="backend/service/cadastro_backend.php" method="post" class="cadastro-form">
             <h2>Cadastro de Pessoa</h2>
             <label for="email">Email:</label>
