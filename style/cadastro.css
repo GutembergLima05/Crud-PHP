@@ -58,8 +58,9 @@ body {
     margin: 10px 0 5px;
 }
 
+
 .cadastro-form input {
-    width: 100%;
+    width: calc(100% - 40px); /* Reduz a largura do input para compensar o preenchimento */
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -67,7 +68,7 @@ body {
 }
 
 .cadastro-form button {
-    width: 100%;
+    width: calc(100% - 40px); /* Ajusta a largura do botão */
     padding: 10px;
     background-color: #333;
     color: white;

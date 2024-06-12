@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style/cadastro.css">
 </head>
 <body>
-<nav>
+    <nav>
         <div class="navbar">
             <div class="logo">
                 <h1>PHP CRUD</h1>
@@ -20,11 +20,17 @@
             </ul>
         </div>
     </nav>
+
     <div class="container">
+
+    <?php if (isset($_GET['error'])): ?>
+        <div style="text-align: center; color: red; font-size: 18px;"><?php echo htmlspecialchars($_GET['error']); ?></div>
+    <?php endif; ?>
+    
         <form action="backend/service/cadastro_backend.php" method="post" class="cadastro-form">
             <h2>Cadastro de Pessoa</h2>
-            <label for="cpf">CPF:</label>
-            <input type="text" id="cpf" name="cpf" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
             
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
@@ -33,7 +39,7 @@
             <input type="date" id="nascimento" name="nascimento" required>
             
             <label for="endereco">Endereço:</label>
-            <input type="text" id="endereco" name="endereco" required>
+            <input type="text" id="endereco" name="endereco">
             
             <button type="submit">Cadastrar</button>
         </form>
