@@ -24,6 +24,8 @@
                     <a href="usuario.php" class="signup-link">Cadastrar novo usuário</a>
                 </div>
             </form>
+
+            <a href="mudar-senha.php" class="change-password-link">Esqueceu a senha? Clique aqui para alterá-la.</a>
         </div>
     </div>
 </body>
