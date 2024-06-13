@@ -7,9 +7,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 5px 35px;
     background-color: #333;
     color: white;
+    height: 50px;
 }
 
 .logo h1 {
@@ -25,7 +26,8 @@ body {
 }
 
 .nav-links li {
-    margin: 0 10px;
+    margin: 0 15px;
+    position: relative;
 }
 
 .nav-links a {
@@ -39,10 +41,59 @@ body {
     color: #ddd;
 }
 
+.dropdown {
+    position: relative;
+}
+
+.dropdown .dropbtn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 120%;
+    right: 10%;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown.show .dropdown-content {
+    display: block;
+}
+
+.user-icon {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+.chevron-down-icon {
+    font-size: 18px;
+    margin-left: 5px;
+}
 
 .container {
     max-width: 800px; 
-    margin: 0 auto;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 table {
@@ -71,14 +122,19 @@ tbody tr:hover {
     background-color: #ddd;
 }
 
-.editar-button {
-    background-color: orange;
-    color: white;
+.editar-button, .excluir-button {
+    background-color: #f4f4f4;
+    color: #333;
     border: none;
     padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.editar-button {
+    background-color: orange;
+    color: white;
 }
 
 .editar-button:hover {
@@ -88,13 +144,12 @@ tbody tr:hover {
 .excluir-button {
     background-color: red;
     color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .excluir-button:hover {
     background-color: darkred;
+}
+
+.show {
+    display: block !important;
 }
