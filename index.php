@@ -8,10 +8,7 @@ include("backend/database/connection.php");
 if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
     header("Location: login.php");
     exit();
-} else {
-    $usuario = $_SESSION['usuario'];
 }
-
 
 // dados para tabela 
 $query = "SELECT * FROM pessoa";

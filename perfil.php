@@ -5,26 +5,10 @@ session_start();
 include("./backend/database/connection.php");
 
 // verificação de login
-if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
+if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"]) || !isset($_SESSION['cargo'])) {
     header("Location: login.php");
     exit();
-} else {
-    $usuario = $_SESSION['usuario'];
 }
-
-
-$id_perfil = $_SESSION['id'];
-
-
-    $query = 'SELECT * FROM usuario WHERE id = ?';
-    $result = $conn->prepare($query);
-    $result->bind_param('i', $id_perfil);
-    $result->execute();
-
-    $row = $result->get_result()->fetch_assoc();
-    $result->close();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -51,18 +35,18 @@ $id_perfil = $_SESSION['id'];
             </div>
         <?php endif; ?>
 
-        <form action="" method="post" class="perfil-form">
+        <form action="backend/service/perfil_backend.php" method="post" class="perfil-form">
             <h2>Alterar Dados</h2>
-            <input type="hidden" id="id" name="id" value="<?php echo isset($row['id']) ? htmlspecialchars($row['id']) : ''; ?>">
+            <input type="hidden" id="id" name="id" value="<?php echo isset($_SESSION['id']) ? htmlspecialchars($_SESSION['id']) : ''; ?>">
 
             <label for="usuario">Usuario:</label>
-            <input type="text" id="usuario" name="usuario" value="<?php echo isset($row['usuario']) ? htmlspecialchars($row['usuario']) : ''; ?>" required>
+            <input type="text" id="usuario" name="usuario" value="<?php echo isset($_SESSION['usuario']) ? htmlspecialchars($_SESSION['usuario']) : ''; ?>" required>
 
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" placeholder="Deixe em branco para manter a senha atual">
 
             <label for="cargo">Cargo:</label>
-            <input disabled type="text" id="cargo" name="cargo" value="<?php echo isset($row['cargo']) ? htmlspecialchars($row['cargo']) : ''; ?>">
+            <input disabled type="text" id="cargo" name="cargo" value="<?php echo isset($_SESSION['cargo']) ? htmlspecialchars($_SESSION['cargo']) : ''; ?>">
 
             <div class="buttons-container">
                 <a href="index.php" class="voltar-button">Voltar</a>

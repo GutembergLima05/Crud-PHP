@@ -9,7 +9,7 @@
             <li class="dropdown">
                 <div id="dropdown-toggle" class="dropbtn">
                     <i class="fas fa-user-circle user-icon"></i>
-                    <span class="nav-dropdown-link">Olá, <?php echo $usuario; ?></span>
+                    <span class="nav-dropdown-link">Olá, <?php echo $_SESSION['usuario']; ?></span>
                     <i class="fas fa-chevron-down chevron-down-icon"></i>
                 </div>
                 <div class="dropdown-content">

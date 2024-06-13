@@ -5,11 +5,7 @@ session_start();
 if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
     header("Location: login.php");
     exit();
-} else {
-    $usuario = $_SESSION['usuario'];
 }
-
-
 ?>
 
 
