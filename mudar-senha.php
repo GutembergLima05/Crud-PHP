@@ -5,11 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP CRUD</title>
-    <link rel="stylesheet" href="style/index.css">
-    <link rel="stylesheet" href="style/login.css">
-    <link rel="stylesheet" href="style/mudar-senha.css"> <!-- Inclua o CSS personalizado aqui -->
+    <link rel="stylesheet" href="style/mudar-senha.css"> 
 
-    <!-- Inclua o Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <style>
@@ -34,7 +31,6 @@
         </div>
     </div>
 
-    <!-- Inclua o jQuery (pode ser baixado ou referenciado online) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./js/mudarSenha.js"></script>
 </body>

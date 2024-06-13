@@ -1,8 +1,8 @@
 <?php
+
 session_start();
 
 include("./backend/database/connection.php");
-
 
 // verificação de login
 if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
@@ -13,18 +13,18 @@ if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
 }
 
 
+$id_perfil = $_SESSION['id'];
 
-if (isset($_POST['id'])) {
-    $id = $_POST['id'];
 
-    $query = 'SELECT * FROM pessoa WHERE id = ?';
+    $query = 'SELECT * FROM usuario WHERE id = ?';
     $result = $conn->prepare($query);
-    $result->bind_param('i', $id);
+    $result->bind_param('i', $id_perfil);
     $result->execute();
 
     $row = $result->get_result()->fetch_assoc();
     $result->close();
-}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ if (isset($_POST['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edição de Pessoa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="style/excluir.css">
+    <link rel="stylesheet" href="style/perfil.css">
 </head>
 
 <body>
@@ -43,6 +43,7 @@ if (isset($_POST['id'])) {
     <?php include('./template/nav.php'); ?>
 
     <div class="container">
+    <i class="fas fa-user-circle user-iconPerfil"></i>
 
         <?php if (isset($_GET['error'])) : ?>
             <div class="error-message">
@@ -50,29 +51,25 @@ if (isset($_POST['id'])) {
             </div>
         <?php endif; ?>
 
-        <form action="backend/service/excluir_backend.php" method="post" class="excluir-form">
-            <h2>Excluir Cadastro</h2>
+        <form action="" method="post" class="perfil-form">
+            <h2>Alterar Dados</h2>
             <input type="hidden" id="id" name="id" value="<?php echo isset($row['id']) ? htmlspecialchars($row['id']) : ''; ?>">
 
-            <label for="email">Email:</label>
-            <input disabled type="email" id="email" name="email" value="<?php echo isset($row['email']) ? htmlspecialchars($row['email']) : ''; ?>" required>
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" value="<?php echo isset($row['usuario']) ? htmlspecialchars($row['usuario']) : ''; ?>" required>
 
-            <label for="nome">Nome:</label>
-            <input disabled type="text" id="nome" name="nome" value="<?php echo isset($row['email']) ? htmlspecialchars($row['nome']) : ''; ?>" required>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" placeholder="Deixe em branco para manter a senha atual">
 
-            <label for="nascimento">Nascimento:</label>
-            <input disabled type="date" id="nascimento" name="nascimento" value="<?php echo isset($row['email']) ? htmlspecialchars($row['nascimento']) : ''; ?>" required>
-
-            <label for="endereco">Endereço:</label>
-            <input disabled type="text" id="endereco" name="endereco" value="<?php echo isset($row['email']) ? htmlspecialchars($row['endereco']) : ''; ?>">
+            <label for="cargo">Cargo:</label>
+            <input disabled type="text" id="cargo" name="cargo" value="<?php echo isset($row['cargo']) ? htmlspecialchars($row['cargo']) : ''; ?>">
 
             <div class="buttons-container">
                 <a href="index.php" class="voltar-button">Voltar</a>
-                <button type="submit">Excluir Cadastro</button>
+                <button type="submit">Salvar Alterações</button>
             </div>
         </form>
     </div>
-
     <script src="./js/dropdown.js"></script>
 </body>
 

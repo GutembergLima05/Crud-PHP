@@ -1,0 +1,182 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 35px;
+    background-color: #333;
+    color: white;
+    height: 50px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+    position: relative;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ddd;
+}
+
+#senha::placeholder{
+    color: red;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown .dropbtn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 120%;
+    right: 10%;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown.show .dropdown-content {
+    display: block;
+}
+
+.user-icon {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+.user-iconPerfil {
+    font-size: 50px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.chevron-down-icon {
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.show {
+    display: block !important;
+}
+
+#cargo{
+    cursor: not-allowed;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.perfil-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.perfil-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.perfil-form input {
+    width: calc(100% - 25px); /* Reduz a largura do input para compensar o preenchimento */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.perfil-form .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.perfil-form button {
+    width: 48%; /* Ajusta a largura do botão */
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.perfil-form button:hover {
+    background-color: #555;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+    font-size: 18px;
+}
+
+.voltar-button {
+    display: inline-block;
+    width: 40%;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.voltar-button:hover {
+    background-color: #555;
+}
+

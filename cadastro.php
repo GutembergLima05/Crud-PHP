@@ -5,7 +5,7 @@ session_start();
 if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
     header("Location: login.php");
     exit();
-} else{
+} else {
     $usuario = $_SESSION['usuario'];
 }
 
@@ -25,27 +25,7 @@ if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
 </head>
 
 <body>
-    <nav>
-        <div class="navbar">
-            <div class="logo">
-                <h1>PHP CRUD</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="cadastro.php">Cadastrar</a></li>
-                <li class="dropdown">
-                    <div id="dropdown-toggle" class="dropbtn">
-                        <i class="fas fa-user-circle user-icon"></i>
-                        <span class="nav-dropdown-link">Olá, <?php echo 'Gutemberg'; ?></span>
-                        <i class="fas fa-chevron-down chevron-down-icon"></i>
-                    </div>
-                    <div class="dropdown-content">
-                        <a href="backend/service/logout_backend.php">Sair</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <?php include('./template/nav.php'); ?>
 
     <div class="container">
 
@@ -75,7 +55,7 @@ if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
             </div>
         </form>
     </div>
-    
+
     <script src="./js/dropdown.js"></script>
 </body>
 
