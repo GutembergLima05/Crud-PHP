@@ -10,10 +10,15 @@
 <body>
     <div class="login-container">
         <div class="login-card">
+        <?php if (isset($_GET['error'])) : ?>
+            <div class="error-message">
+                <?php echo htmlspecialchars($_GET['error']); ?>
+            </div>
+        <?php endif; ?>
             <h2>Login</h2>
-            <form action="login.php" method="post">
-                <input type="text" name="username" placeholder="Usuário" required>
-                <input type="password" name="password" placeholder="Senha" required>
+            <form action="backend/service/login_backend.php" method="post">
+                <input type="text" name="usuario" placeholder="Usuário" required>
+                <input type="password" name="senha" placeholder="Senha" required>
                 <div class="login-options">
                     <button type="submit">Entrar</button>
                     <a href="usuario.php" class="signup-link">Cadastrar novo usuário</a>

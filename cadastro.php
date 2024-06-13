@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+// verificação de login
+if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
+    header("Location: login.php");
+    exit();
+} else{
+    $usuario = $_SESSION['usuario'];
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -25,7 +40,7 @@
                         <i class="fas fa-chevron-down chevron-down-icon"></i>
                     </div>
                     <div class="dropdown-content">
-                        <a href="logout.php">Sair</a>
+                        <a href="backend/service/logout_backend.php">Sair</a>
                     </div>
                 </li>
             </ul>

@@ -2,7 +2,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    background-image: url('background.jpg'); /* Substitua 'background.jpg' pelo caminho da sua imagem de fundo */
     background-size: cover;
     background-position: center;
 }
@@ -73,4 +72,10 @@ body {
     text-align: center;
     font-size: 14px;
     margin-top: 10px; 
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+    font-size: 18px;
 }

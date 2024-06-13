@@ -1,7 +1,19 @@
 <?php
 
+session_start();
+
 include("backend/database/connection.php");
 
+// verificação de login
+if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
+    header("Location: login.php");
+    exit();
+} else{
+    $usuario = $_SESSION['usuario'];
+}
+
+
+// dados para tabela 
 $query = "SELECT id, email, nome, nascimento, endereco FROM pessoa";
 $result = $conn->query($query);
 
@@ -41,11 +53,11 @@ if ($result) {
                 <li class="dropdown">
                     <div id="dropdown-toggle" class="dropbtn">
                         <i class="fas fa-user-circle user-icon"></i>
-                        <span class="nav-dropdown-link">Olá, <?php echo 'Gutemberg'; ?></span>
+                        <span class="nav-dropdown-link">Olá, <?php echo $usuario; ?></span>
                         <i class="fas fa-chevron-down chevron-down-icon"></i>
                     </div>
                     <div class="dropdown-content">
-                        <a href="logout.php">Sair</a>
+                        <a href="backend/service/logout_backend.php">Sair</a>
                     </div>
                 </li>
             </ul>
