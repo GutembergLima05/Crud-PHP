@@ -1,9 +1,14 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="style/usuario.css">
 </head>
 <body>
@@ -28,5 +33,6 @@
             <a href="login.php" class="login-link">Já possui uma conta? Faça login aqui.</a>
         </div>
     </div>
+    <?php include("./template/alert.php"); ?>
 </body>
 </html>

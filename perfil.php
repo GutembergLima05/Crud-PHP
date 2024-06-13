@@ -18,6 +18,7 @@ if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"]) || !isset($_SESSION[
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edição de Pessoa</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style/perfil.css">
 </head>
@@ -27,7 +28,7 @@ if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"]) || !isset($_SESSION[
     <?php include('./template/nav.php'); ?>
 
     <div class="container">
-    <i class="fas fa-user-circle user-iconPerfil"></i>
+        <i class="fas fa-user-circle user-iconPerfil"></i>
 
         <?php if (isset($_GET['error'])) : ?>
             <div class="error-message">
@@ -54,7 +55,9 @@ if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"]) || !isset($_SESSION[
             </div>
         </form>
     </div>
+
     <script src="./js/dropdown.js"></script>
+    <?php include("./template/alert.php"); ?>
 </body>
 
 </html>

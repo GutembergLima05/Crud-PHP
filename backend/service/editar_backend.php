@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include("../database/connection.php");
 
@@ -29,16 +30,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             throw new Exception("Erro: Email já cadastrado.");
         }
 
-        // Atualiza os dados na tabela pessoa
-        $stmt = $conn->prepare("UPDATE pessoa SET email = ?, nome = ?, nascimento = ?, endereco = ? WHERE id = ?");
+        // Atualiza os dados na tabela pessoa apenas com os campos que foram enviados
+        $update_query = "UPDATE pessoa SET email = ?, nome = ?, nascimento = ?, endereco = ? WHERE id = ?";
+        $stmt = $conn->prepare($update_query);
         if (!$stmt) {
             throw new Exception("Falha na preparação da consulta: " . $conn->error);
         }
         $stmt->bind_param("ssssi", $email, $nome, $nascimento, $endereco, $id);
 
         if ($stmt->execute()) {
-            header("Location: ../../index.php");
-            exit();
+            // Sucesso ao atualizar
+            $_SESSION['alert_message'] = "Dados atualizados com sucesso!";
+            $_SESSION['alert_type'] = "success";
+            $_SESSION['redirect_url'] = "index.php";
         } else {
             throw new Exception("Erro ao atualizar: " . $stmt->error);
         }
@@ -46,12 +50,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
         $check_stmt->close();
         $conn->close();
+
+        header("Location: ../../editar.php");
+        exit();
     } catch (Exception $e) {
         $error_message = $e->getMessage();
-    }
 
-    if (!empty($error_message)) {
-        header("Location: ../../editar.php?error=" . urlencode($error_message));
+        // Define mensagem de erro específica se o email estiver duplicado
+        if (strpos($error_message, "Erro: Email já cadastrado.") !== false) {
+            $_SESSION['alert_message'] = "Erro: Email já cadastrado.";
+        } else {
+            $_SESSION['alert_message'] = $error_message;
+        }
+
+        $_SESSION['alert_type'] = "error";
+        $_SESSION['redirect_url'] = "index.php";
+
+        
+        header("Location: ../../editar.php");
         exit();
     }
 }

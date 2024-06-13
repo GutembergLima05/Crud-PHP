@@ -15,19 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
-        // Verifica se o usuário existe
-        $check_stmt = $conn->prepare("SELECT usuario FROM usuario WHERE id = ?");
-        if (!$check_stmt) {
-            throw new Exception("Falha na preparação da consulta: " . $conn->error);
-        }
-        $check_stmt->bind_param("i", $id_logado);
-        $check_stmt->execute();
-        $check_stmt->store_result();
-
-        if ($check_stmt->num_rows <= 0) {
-            throw new Exception("Erro: Usuário não existe");
-        }
-
         // Verificação da senha digitada
         if (!empty($senha)) {
             $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
@@ -43,21 +30,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if ($stmt->execute()) {
-            header("Location: ../../login.php");
+            // Atualizar variáveis de sessão apenas se a operação for bem-sucedida
+            $_SESSION['usuario'] = $usuario;
+            $_SESSION['alert_message'] = "Dados atualizados com sucesso!";
+            $_SESSION['alert_type'] = "success";
+            $_SESSION['redirect_url'] = "index.php"; // Altere conforme necessário
+
+            // Fechar statement e conexão
+            $stmt->close();
+            $conn->close();
+
+            // Redirecionar para a página de perfil
+            header("Location: ../../perfil.php");
             exit();
         } else {
             throw new Exception("Erro ao alterar dados: " . $stmt->error);
         }
-
-        $stmt->close();
-        $check_stmt->close();
-        $conn->close();
     } catch (Exception $e) {
         $error_message = $e->getMessage();
-    }
+        if (strpos($e->getMessage(), "Duplicate entry") !== false) {
+            $_SESSION['alert_message'] = "Erro: Já existe um usuário com este nome.";
+        } else {
+            $_SESSION['alert_message'] = $e->getMessage();
+        }
+        $_SESSION['alert_type'] = "error";
+        $_SESSION['redirect_url'] = "perfil.php"; // Altere conforme necessário
 
-    if (!empty($error_message)) {
-        header("Location: ../../perfil.php?error=" . urlencode($error_message));
+        // Redirecionar para a página de perfil em caso de erro
+        header("Location: ../../perfil.php");
         exit();
     }
 }

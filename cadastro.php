@@ -16,6 +16,7 @@ if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style/cadastro.css">
 </head>
@@ -53,6 +54,7 @@ if (!isset($_SESSION["usuario"]) || !isset($_SESSION["id"])) {
     </div>
 
     <script src="./js/dropdown.js"></script>
+    <?php include("./template/alert.php"); ?>
 </body>
 
 </html>
