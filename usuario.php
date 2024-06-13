@@ -9,10 +9,20 @@
 <body>
     <div class="cadastro-container">
         <div class="cadastro-card">
+        <?php if (isset($_GET['error'])) : ?>
+            <div class="error-message">
+                <?php echo htmlspecialchars($_GET['error']); ?>
+            </div>
+        <?php endif; ?>
             <h2>Cadastro de Usuário</h2>
-            <form action="cadastro_usuario.php" method="post">
-                <input type="text" name="nome" placeholder="Nome de usuário" required>
+            <form action="backend/service/usuario_backend.php" method="post">
+                <input type="text" name="usuario" placeholder="Nome de usuário" required>
                 <input type="password" name="senha" placeholder="Senha" required>
+                <select name="cargo" required>
+                    <option value="">Selecione o cargo</option>
+                    <option value="admin">Admin</option>
+                    <option value="usuario">Usuário</option>
+                </select>
                 <button type="submit">Cadastrar</button>
             </form>
             <a href="login.php" class="login-link">Já possui uma conta? Faça login aqui.</a>

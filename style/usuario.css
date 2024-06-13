@@ -16,6 +16,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Ajuste para largura do card */
 }
 
 .cadastro-card h2 {
@@ -28,7 +29,7 @@ body {
     flex-direction: column;
 }
 
-.cadastro-card input {
+.cadastro-card input, .cadastro-card select {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -52,6 +53,12 @@ body {
     color: black;
     text-align: center;
     font-size: 14px;
-    margin-top: 10px; /* Espaçamento entre os links */
+    margin-top: 10px;
     display: block;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+    font-size: 18px;
 }
